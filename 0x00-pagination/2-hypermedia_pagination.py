@@ -2,8 +2,7 @@
 """2-hypermedia_pagination"""
 
 import csv
-import math
-from typing import List, Tuple
+from typing import Dict, List, Tuple
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
@@ -44,7 +43,7 @@ class Server:
         start_idx, end_idx = index_range(page, page_size)
         return self.dataset()[start_idx: end_idx]
 
-    def get_hyper(self, page: int, page_size: int):
+    def get_hyper(self, page: int, page_size: int) -> Dict:
         """returns a dictionary contain the following key-value pairs
         page_size: the length of the returned dataset page
         page: the current page number
