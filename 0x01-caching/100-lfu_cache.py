@@ -6,6 +6,7 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 class LFUCache(BaseCaching):
     """LFUCache Class"""
+
     def __init__(self):
         """initialize"""
         super().__init__()
@@ -14,9 +15,11 @@ class LFUCache(BaseCaching):
     def put(self, key, item):
         """sets the key to value in the cache"""
         if key and item:
-            if len(self.cache_data) >= self.MAX_ITEMS and self.cache_data.get(key) is None:
+            if len(self.cache_data) >= self.MAX_ITEMS and self.cache_data.get(
+                    key) is None:
                 del_val = min(self._data_info.values())
-                del_key = list(self._data_info.keys())[list(self._data_info.values()).index(del_val)]
+                del_key = list(self._data_info.keys())[list(
+                    self._data_info.values()).index(del_val)]
 
                 try:
                     del self.cache_data[del_key]
